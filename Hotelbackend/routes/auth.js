@@ -13,6 +13,9 @@ const JWT_SECRET = process.env.JWT_SECRET;
 ====================== */
 router.post("/login", async (req, res) => {
   try {
+    if (!req.body) {
+      return res.status(400).json({ message: "Invalid request body" });
+    }
     const { email, password } = req.body;
 
     console.log("🔐 Login:", email);
