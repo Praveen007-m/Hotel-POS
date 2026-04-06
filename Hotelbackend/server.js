@@ -202,7 +202,7 @@ app.use((req, res, next) => {
     return next();
   }
 
-  if (!isDbReady) {
+  if (!isDbReady && req.path !== "/") {
     return res.status(503).json({
       success: false,
       message: "Server initializing, please try again in a moment...",
